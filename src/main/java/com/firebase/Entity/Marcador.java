@@ -10,5 +10,7 @@ public class Marcador {
 	private Double latitud;
 	private Double longitud;
 	private String nombre;
+    private String horaInicio;
+	private String horaActualizacion;
 
 }

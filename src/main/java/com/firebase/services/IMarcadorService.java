@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.firebase.Entity.Marcador;
 
-public interface IPostManagementService {
+public interface IMarcadorService {
 
 	 List<Marcador> listar();
 	 Boolean crear(Marcador entity);

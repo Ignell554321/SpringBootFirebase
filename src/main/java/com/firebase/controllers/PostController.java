@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import com.firebase.Entity.Marcador;
-import com.firebase.services.impl.PostManagementServiceImpl;
+import com.firebase.services.impl.MarcadorServiceImpl;
 
 
 @Controller
 public class PostController {
 	
 	@Autowired
-	private PostManagementServiceImpl postManagementServiceImpl;
+	private MarcadorServiceImpl postManagementServiceImpl;
 	
 	@GetMapping(value = "/Listar")
 	public ResponseEntity<java.util.List<Marcador>> List() {

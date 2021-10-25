@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.firebase.Entity.Marcador;
 import com.firebase.firebase.Iniciarfirebase;
-import com.firebase.services.IPostManagementService;
+import com.firebase.services.IMarcadorService;
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.CollectionReference;
 import com.google.cloud.firestore.DocumentSnapshot;
@@ -18,7 +18,7 @@ import com.google.cloud.firestore.QuerySnapshot;
 import com.google.cloud.firestore.WriteResult;
 
 @Service
-public class PostManagementServiceImpl implements IPostManagementService {
+public class MarcadorServiceImpl implements IMarcadorService {
 
 	
 	@Autowired
@@ -39,6 +39,8 @@ public class PostManagementServiceImpl implements IPostManagementService {
 	            	marcador=new Marcador();
 	            	marcador.setId(doc.getId());
 	            	marcador.setNombre(doc.getString("nombre"));
+	            	marcador.setHoraInicio(doc.getString("horaInicio"));
+	            	marcador.setHoraActualizacion(doc.getString("horaActualizacion"));
 	            	marcador.setActivo(doc.getBoolean("activo"));
 	            	marcador.setLatitud( doc.getDouble("latitud"));
 	            	marcador.setLongitud(doc.getDouble("longitud"));
@@ -56,15 +58,6 @@ public class PostManagementServiceImpl implements IPostManagementService {
 	@Override
 	public Boolean crear(Marcador entity) {
 		
-		Map<String,Object>docData=new HashMap<>();
-		docData.put("title", entity.getLatitud());
-		docData.put("", entity.getLatitud());
-		
-		Marcador marcador=new Marcador();
-		marcador.setActivo(true);
-		/*marcador.setLatitud("3.12");
-		marcador.setLongitud("5.311");*/
-		marcador.setNombre("prueba");
 		
 		CollectionReference marcadores= firebase.getFirestore().collection("Marcador");
 		ApiFuture<WriteResult> writeResultApiFuture=marcadores.document().create(entity);
